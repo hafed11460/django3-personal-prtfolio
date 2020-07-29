@@ -1,0 +1,18 @@
+{% extends "portfolio/app.html" %}
+{% block content %}
+    <div class="container">
+    <h3> Hafed has written {{ blogs.count }} blog{{ blogs.count|pluralize }} </h3>
+    <div class="row row-cols-1 row-cols-md-3">
+        {% for blog in blogs %}
+        <div class="col mb-4">
+            <div class="card h-100">            
+            <div class="card-body">
+                <a href="{% url 'detail' blog.id %}"><h5 class="card-title">{{ blog.title}} <small>{{ blog.date|date:'M d Y'|upper }} </small></h5></a>
+                <p class="card-text">{{ blog.description|safe|truncatechars:100}}</p>
+            </div>
+            </div>
+        </div>
+        {% endfor %}       
+    </div>           
+  </div>
+{% endblock  %} 
